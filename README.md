@@ -27,6 +27,7 @@ It builds on a fork of [x86recomp](https://github.com/aplaino/x86recomp) (MIT), 
 
 - [x86recomp](https://github.com/aplaino/x86recomp) (MIT): the static recompiler and runtime this builds on.
 - [SF4 Ember Netplay](https://github.com/Confetti3/SF4-Ember-Netplay) (MIT): game addresses, the state hash and the scripted Training fight used by the oracle (`src/oraculo*`). Its license is in `LICENSE-Ember`.
+- [typex2-recomp](https://github.com/PabloVSouza/typex2-recomp) by PabloVSouza (GPL-3.0-or-later): its notes on porting SSF4 AE and its shader test were consulted while planning. No code from it is used here.
 - FAudio, SDL3, SoftFloat and the other libraries the toolkit uses, under their own licenses.
 
 Street Fighter is a trademark of Capcom. This project is not affiliated with or endorsed by Capcom.
