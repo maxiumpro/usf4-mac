@@ -1,0 +1,21 @@
+# Saltos indirectos que W1 no cubrió, con destinos que el port vio tomar o que
+# salen de datos del exe. Mismo formato que w1/saltos_destinos.tsv (tools/lift.sh
+# lo pasa a semillas_saltos.py como segunda fuente).
+jmp	targets
+# 664BD9 `jmp eax` de un delegado de la película (MovieValid/MovieSignal); W1 vio 00664C00 y
+# 00665050. 00664C40 = "FadeOut" de la película: lo tomó el port al elegir Training en el
+# menú (corrida 2 de B1 ronda 2). HIPÓTESIS: puede ser divergencia del port (sin decodificador
+# de video, CoCreateInstance de DirectShow falla) y no un hueco de cobertura de W1.
+00664BD9	00664C40
+# 8D7EB5 y 8D7F41: `jmp [ebx]` de la CRT de matemática x87 (atan2 y compañía): el destino
+# sale de una tabla por función en .data (descriptor+0x10+índice de fxam; xlat en 009F80BC).
+# Ghidra y W1 vieron 4 destinos; el port tomó 008E61FC. Los 9 punteros a código de esos
+# descriptores (.data 009F0000-00A00000 que apuntan a 008C0000-008F2000 y se usan como
+# destino de estas tablas; confirmado leyendo 009F3410 y 009FF350 del exe, no corriendo).
+008D7EB5	008CEC44,008D7F54,008D7F8D,008D7F8F,008D7FB7,008D7FF6,008E61FC,008E6255,008E6278
+008D7F41	008CEC44,008D7F54,008D7F8D,008D7F8F,008D7FB7,008D7FF6,008E61FC,008E6255,008E6278
+# 5D42FB `jmp edx`: destino = [eax*4+0x954CE8], eax = resultado de una llamada virtual
+# (vtable+0x6C). La pelea de demostración de la Air (19-nov, Title sin tocar) murió con
+# "branch at 005D42FB to 00562F40 outside lifted code". La tabla tiene 17 punteros a código
+# (leídos de .rdata del exe; el 18.º es 0): se siembran todos.
+005D42FB	005D37B0,00562F40,005D3900,005D39F0,005D4C50,005D3130,005D1570,005D1680,005D5170,005D52E0,005D54B0,005D5610,005D5810

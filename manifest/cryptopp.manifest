@@ -1,0 +1,22 @@
+# cryptopp.dll: manifest del lifter (generado por tools/armar_manifest.py; no editar a mano)
+#
+# entry <va> [nombre]   función que Ghidra no encontró (destino indirecto)
+# setjmp <va> [nombre]  función tipo setjmp: sus llamantes son reanudables
+# resume <va>           call/jmp que abandona la cadena de llamadas (GuestResume)
+
+## CRT de VS2010 (por patrón de bytes)
+# setjmp de la CRT: cada retorno de una llamada directa es punto de reanudación (0 en este módulo)
+# longjmp: jmp [jmp_buf+14h] con ebp/esp del llamante de setjmp ya restaurados (0 en este módulo)
+# _EH4_TransferToHandler: jmp esi al bloque __except, ebp = marco dueño (1 en este módulo)
+resume 4297be00
+# _JumpToContinuation: jmp eax a la continuación del catch, ebp = marco dueño (1 en este módulo)
+resume 42972aec
+# HIPOTESIS: prólogo SEH4 (registra el marco del llamante) (1 en este módulo)
+setjmp 42974ba0 __SEH_prolog4
+# HIPOTESIS: prólogo C++ EH3 (registra el marco del llamante) (4 en este módulo)
+setjmp 42972ea5 __EH_prolog3
+setjmp 42972ed8 __EH_prolog3
+setjmp 42972f0e __EH_prolog3
+setjmp 42972f44 __EH_prolog3
+# llamadas directas a cada función setjmp: 42974ba0=54, 42972ea5=556, 42972ed8=88, 42972f0e=331, 42972f44=4
+

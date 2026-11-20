@@ -1,0 +1,12 @@
+# Nada del juego ni derivado de él: se regenera con tools/lift.sh.
+generated/
+symbols/
+medidas/
+work/
+build/
+out/
+tools/local.env
+*.dis
+*.exe
+*.dll
+__pycache__/

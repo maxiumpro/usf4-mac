@@ -1,0 +1,639 @@
+# SSFIV.exe (USF4, build 834219): manifest del lifter (generado por tools/armar_manifest.py; no editar a mano)
+#
+# entry <va> [nombre]   función que Ghidra no encontró (destino indirecto)
+# setjmp <va> [nombre]  función tipo setjmp: sus llamantes son reanudables
+# resume <va>           call/jmp que abandona la cadena de llamadas (GuestResume)
+
+## CRT de VS2010 (por patrón de bytes)
+# setjmp de la CRT: cada retorno de una llamada directa es punto de reanudación (1 en este módulo)
+setjmp 8cd610 __setjmp3
+# longjmp: jmp [jmp_buf+14h] con ebp/esp del llamante de setjmp ya restaurados (1 en este módulo)
+resume 8cda2a
+# _EH4_TransferToHandler: jmp esi al bloque __except, ebp = marco dueño (1 en este módulo)
+resume 8df580
+# _JumpToContinuation: jmp eax a la continuación del catch, ebp = marco dueño (1 en este módulo)
+resume 8c5b31
+# HIPOTESIS: prólogo SEH4 (registra el marco del llamante) (2 en este módulo)
+setjmp 8d0170 __SEH_prolog4
+setjmp 8eb720 __SEH_prolog4
+# HIPOTESIS: prólogo C++ EH3 (registra el marco del llamante) (2 en este módulo)
+setjmp 8d3ed5 __EH_prolog3
+setjmp 8d3f08 __EH_prolog3
+# llamadas directas a cada función setjmp: 8cd610=8, 8d0170=66, 8eb720=1, 8d3ed5=4, 8d3f08=2
+
+## Ember: funciones con nombre (kind=func)
+entry 4033e0 Dimps::App::HandleMessage
+entry 404890 Platform::dString::assign
+entry 406740 Dimps::App::AddResourcePath
+entry 40cf60 GameEvents::MainMenu::GetApp
+entry 4246b0 Event::EventBaseWithEC::GetChildEventController
+entry 4299e0 Dimps::App::GetRootEvent
+entry 444780 Game::ReplayBattle::ClearGuides
+entry 4796d0 Game::ReplayBattle::PlayRow
+entry 4a52e0 Event::EventBase::IsTerminationComplete
+entry 4d22c0 StageSelect::Control::GetPhase
+entry 4d25f0 StageSelect::Control::SelectStage
+entry 4d3670 StageSelect::Control::SetStageCursor
+entry 50e600 Dimps::UserApp::Steam_PostUpdate
+entry 5100e0 Pad::System::ClearInputs
+entry 510170 Pad::System::SetActiveButtonMapping
+entry 510710 Pad::System::GetAllDeviceCount
+entry 510740 Pad::System::GetOKDeviceCount
+entry 511110 Pad::System::CaptureNextMatchingPadToSide
+entry 511cf0 Pad::System::GetDeviceName
+entry 512180 Pad::System::UpdateInputs
+entry 517130 Pad::System::GetButtons_RawOn
+entry 517150 Pad::System::GetButtons_RawRising
+entry 517170 Pad::System::GetButtons_RawFalling
+entry 517190 Pad::System::GetButtons_RawRisingWithRepeat
+entry 5171b0 Pad::System::GetButtons_MappedOn
+entry 517240 Pad::System::GetDeviceIndexForPlayer
+entry 517270 Pad::System::SetDeviceTypeForPlayer
+entry 517290 Pad::System::GetDeviceTypeForPlayer
+entry 517360 Pad::System::SetSideHasAssignedController
+entry 5173c0 Pad::System::GetAssigmentStatusForPlayer
+entry 517530 Pad::System::AssociatePlayerAndGamepad
+entry 519480 Pad::System::GetSingleton
+entry 51bc30 Pad::System::LoadButtonConfig
+entry 52b730 Action::Actor::GetMementoSize
+entry 52b7c0 Action::Actor::RecordToMemento
+entry 52c0c0 Action::Actor::RestoreFromMemento
+entry 52d660 Chara::Actor::GetCurrentRootPosition
+entry 52d700 Chara::Actor::GetActionID
+entry 52d720 Chara::Actor::GetActionFrame
+entry 52d980 Chara::Actor::IsInHitStop
+entry 52da50 Chara::Actor::GetActionScript
+entry 52f3d0 Game::GameMementoKey::ClearKey
+entry 52fd40 Game::GameMementoKey::Initialize
+entry 538110 Battle::JobManager::Start
+entry 539f40 Chara::Actor::IsAirborne
+entry 53a020 Chara::Actor::IsCrouching
+entry 541d20 Chara::Actor::GetCurrentSide
+entry 541ea0 Chara::Actor::GetActionPosture
+entry 541ee0 Chara::Actor::GetVitalityAmt_FixedPoint
+entry 541f00 Chara::Actor::GetVitalityMax_FixedPoint
+entry 541f20 Chara::Actor::GetVitalityPct_FixedPoint
+entry 541f80 Chara::Actor::GetRecoverableVitalityAmt_FixedPoint
+entry 541fa0 Chara::Actor::GetRecoverableVitalityMax_FixedPoint
+entry 541fc0 Chara::Actor::GetRecoverableVitalityPct_FixedPoint
+entry 542020 Chara::Actor::GetSuperComboAmt_FixedPoint
+entry 542040 Chara::Actor::GetSuperComboMax_FixedPoint
+entry 542060 Chara::Actor::GetSuperComboPct_FixedPoint
+entry 5420c0 Chara::Actor::GetSCTimeAmt_FixedPoint
+entry 5420e0 Chara::Actor::GetSCTimeMax_FixedPoint
+entry 542100 Chara::Actor::GetSCTimePct_FixedPoint
+entry 542180 Chara::Actor::GetRevengeAmt_FixedPoint
+entry 5421a0 Chara::Actor::GetRevengeMax_FixedPoint
+entry 5421c0 Chara::Actor::GetRevengePct_FixedPoint
+entry 542220 Chara::Actor::GetUCTimeAmt_FixedPoint
+entry 542240 Chara::Actor::GetUCTimeMax_FixedPoint
+entry 542260 Chara::Actor::GetUCTimePct_FixedPoint
+entry 5422e0 Chara::Actor::GetStunAmt_FixedPoint
+entry 542300 Chara::Actor::GetStunMax_FixedPoint
+entry 542390 Chara::Actor::GetBasicActionInhibit
+entry 5423b0 Chara::Actor::GetCommandMove
+entry 5423d0 Chara::Actor::GetDamage
+entry 542410 Chara::Actor::GetComboDamage
+entry 542480 Chara::Actor::GetFramesUntilActionable
+entry 542520 Chara::Actor::GetStatus
+entry 5427a0 Chara::Actor::GetCurrentBonePositionByID
+entry 551800 Chara::Actor::ResetAfterMemento
+entry 562040 Chara::Afterimage::GetMementoSize
+entry 5620a0 Chara::Afterimage::RecordToMemento
+entry 562100 Chara::Afterimage::RestoreFromMemento
+entry 563260 Chara::Actor::GetBoneLabelByID
+entry 5632a0 Chara::Actor::GetLocatorPairEnd
+entry 5633a0 Chara::Unit::RecordToInternalMementoKey
+entry 5633f0 Chara::Unit::RestoreFromInternalMementoKey
+entry 563510 Dimps::Game::Battle::System::GetCharaUnit
+entry 565cd0 Chara::Unit::CanStoreMemento_MaybeActorExists
+entry 565d10 Chara::Unit::GetActorByIndex
+entry 56b3f0 Chara::ItemCollection::GetItemByIndex
+entry 56c6a0 Chara::Actor::GetActorID
+entry 56ca60 Effect::ActorManager::GetMementoSize
+entry 56ee70 Effect::Unit::RecordToInternalMementoKey
+entry 56eea0 Effect::Unit::RestoreFromInternalMementoKey
+entry 5717d0 Camera::Unit::RestoreFromInternalMementoKey
+entry 5719d0 Camera::Unit::RecordToInternalMementoKey
+entry 572e60 Hud::Unit::RecordToInternalMementoKey
+entry 572e90 Hud::Unit::RestoreFromInternalMementoKey
+entry 5731a0 Hud::Unit::Factory
+entry 573f00 Hud::Cockpit::Unit::HudCockpit_Update
+entry 574c70 Hud::Cockpit::View::RestoreFromInternalMementoKey
+entry 5764b0 Hud::Cockpit::View::Update
+entry 577910 Game::Sprite::Control::Enable_0x577910
+entry 57bd80 Game::Sprite::Control::Disable_0x57bd80
+entry 580b90 Hud::Announce::Unit::HudAnnounce_Update
+entry 5834d0 Hud::Result::Unit::HudResult_Update
+entry 588450 Game::Sprite::Control::Enable_0x588450
+entry 5886c0 Hud::Notice::Unit::RestoreFromInternalMementoKey
+entry 589770 Hud::Notice::Bonus::Enable
+entry 5898c0 Hud::Notice::Bonus::Disable
+entry 58a0e0 Hud::Notice::Combo::Enable
+entry 58a540 Platform::dDeque_0x10::push_back
+entry 58ae90 Battle::IUnit::SharedHudUpdate
+entry 58c130 Hud::Cursor::Unit::HudCursor_Update
+entry 58e2c0 Hud::Subtitle::Unit::HudSubtitle_Update
+entry 58f290 Hud::Training::Unit::HudTraining_Update
+entry 591dd0 SoundUnit::IsStillPlaying
+entry 5935b0 Battle::Sound::SoundPlayerManager::CriPlayerAdapter::IsStillPlaying
+entry 593a40 Battle::Sound::SoundPlayerManager::StopAll
+entry 593e70 Battle::Sound::SoundPlayerManager::PlaySound
+entry 593f40 Battle::Sound::SoundPlayerManager::StopSound
+entry 593fd0 Battle::Sound::SoundPlayerManager::Update
+entry 594010 Battle::Sound::SoundPlayerManager::Factory
+entry 5940a0 Battle::Sound::SoundPlayerManager::destructor
+entry 5983e0 Command::Unit::RecordToInternalMementoKey
+entry 598410 Command::Unit::RestoreFromInternalMementoKey
+entry 599400 Command::Unit::GetCommandImplForEntry
+entry 59a460 Command::CommandImpl::GetCurrentOnSwitches
+entry 59a470 Command::CommandImpl::GetCurrentRisingSwitches
+entry 59a480 Command::CommandImpl::GetCurrentFallingSwitches
+entry 5b6800 Vfx::Unit::RecordToInternalMementoKey
+entry 5b6840 Vfx::Unit::RestoreFromInternalMementoKey
+entry 5b6a70 Vfx::Unit::GetContainerByType
+entry 5bdfd0 Vfx::ObjectContainer::GetObjectFromHandle
+entry 5c0de0 Vfx::ParticleContainer::GetParticleFromHandle
+entry 5c2c10 Vfx::TraceContainer::GetTraceFromHandle
+entry 5cd740 Vfx::ColorFadeUnit::GetFade
+entry 5cdc40 Vfx::ColorFadeUnit::GetSingleton
+entry 5ce7b0 Vfx::ColorFade::Spawn
+entry 5d1370 Battle::GameManager::GetNativeResultIndex
+entry 5d14d0 Battle::GameManager::GetRoundTime
+entry 5d14f0 Battle::GameManager::GetAgglutinateTime
+entry 5d5ce0 Battle::ReplaySystem::Stop
+entry 5d5d80 Battle::ReplaySystem::BuildReplay
+entry 5d5df0 Battle::ReplaySystem::FreeReplay
+entry 5d6410 Battle::ReplaySystem::GetReplaySize
+entry 5d6700 Battle::ReplaySystem::GetSingleton
+entry 5d6a70 Dimps::Game::Battle::System::IsLeavingBattle
+entry 5d6b10 Dimps::Game::Battle::System::BattleUpdate
+entry 5d7750 Dimps::Game::Battle::System::ReplayCadence
+entry 5d7b70 Dimps::Game::Battle::System::GetMementoSize
+entry 5d7b80 Dimps::Game::Battle::System::RecordToMemento
+entry 5d7d80 Dimps::Game::Battle::System::RestoreFromMemento
+entry 5d7f80 Dimps::Game::Battle::System::RecordAllToInternalMementoKeys
+entry 5d8020 Dimps::Game::Battle::System::RestoreAllFromInternalMementoKeys
+entry 5d90d0 Dimps::Game::Battle::System::RestoreFromInternalMementoKey
+entry 5d9720 Dimps::Game::Battle::System::GetUnitByIndex
+entry 5d97c0 Dimps::Game::Battle::System::GetGameMode
+entry 5d9930 Dimps::Game::Battle::System::GetTaskCore
+entry 5d9950 Dimps::Game::Battle::System::GetGameManager
+entry 5d9960 Dimps::Game::Battle::System::GetNumCharasToSimulateThisFrame
+entry 5d9f60 Dimps::Game::Battle::System::IsFight
+entry 5d9fe0 Dimps::Game::Battle::System::GetGlobalTimeScale_Fixed
+entry 5da060 Dimps::Game::Battle::System::GetUnitTimeScale_Fixed
+entry 5daab0 Dimps::Game::Battle::System::RecordToInternalMementoKey
+entry 5dab30 Dimps::Game::Battle::System::SysMain_HandleTrainingModeFeatures
+entry 5db3f0 Dimps::Game::Battle::System::CloseBattle
+entry 5dba30 Dimps::Game::Battle::System::GetSingleton
+entry 5dbaa0 Dimps::Game::Battle::System::SysMain_UpdatePauseState
+entry 5dce90 Dimps::Game::Battle::System::SetBattleFlow
+entry 5dd350 Dimps::Game::Battle::System::OnBattleFlow_BattleStart
+entry 5e25a0 Training::Manager::RestoreFromInternalMementoKey
+entry 5e2770 Training::Manager::RecordToInternalMementoKey
+entry 5e28b0 Training::Manager::GetSingleton
+entry 612c70 GameEvents::MainMenu::GetItemObserverState
+entry 612f30 GameEvents::MainMenu::Factory
+entry 612f90 GameEvents::MainMenu::Destroy
+entry 6131a0 GameEvents::MainMenu::GoToVersusMode
+entry 613980 GameEvents::MainMenu::IdleTask
+entry 614cb0 GameEvents::MainMenu::OnModeSelected
+entry 63b9f0 GameEvents::VsBattle::CheckAndMaybeExitBasedOnExitType
+entry 63bd90 GameEvents::VsBattle::HasInitialized
+entry 63bdf0 GameEvents::VsBattle::ExitForeground
+entry 63c6a0 GameEvents::VsBattle::PrepareBattleRequest
+entry 63cad0 GameEvents::VsBattle::RegisterTasks
+entry 63d0e0 GameEvents::VsCharaSelect::Destroy
+entry 63d660 GameEvents::VsCharaSelect::Factory
+entry 63dc60 GameEvents::VsMode::Destroy
+entry 63dde0 GameEvents::VsMode::Factory
+entry 63e1a0 GameEvents::VsPreBattle::RegisterTasks
+entry 63e5d0 GameEvents::VsStageSelect::Destroy
+entry 63e870 GameEvents::VsStageSelect::Factory
+entry 675390 Platform::Sound::GetNewPlayerHandle
+entry 676ef0 Game::ReplayInfoList::Read
+entry 67c3f0 Game::SaveDataController::Start
+entry 67c410 Game::SaveDataController::State
+entry 67c430 Game::SaveDataController::Busy
+entry 67c450 Game::SaveDataController::ReadSlot
+entry 67c880 Game::SaveDataController::GetSingleton
+entry 67df70 Game::SaveDataController::UnlockIdle
+entry 684620 Game::Request::SetIsOnlineBattle
+entry 6851a0 Game::Request::SetPlayerParam
+entry 685300 Game::Request::SetRandomSeed
+entry 685d70 Game::Request::GetRandomSeed
+entry 686570 GameEvents::MainMenu::FadeOut
+entry 686b50 Game::ReplayBattle::FadeVoice
+entry 68ecf0 Dimps::Eva::TaskCore::GetNumUsed
+entry 69bd20 Platform::dDeque_0x10::clear
+entry 6aa3c0 Event::EventController::GetForegroundEventStatus
+entry 6aa3f0 Event::EventController::EnterTerminalState
+entry 6aa420 Event::EventController::GetForegroundEvent
+entry 6aac80 Event::EventController::RunUpdate
+entry 6ab3b0 Event::EventController::QueueEvent
+entry 6b2530 Dimps::App::SetBattleStepSetting
+entry 6b2fd0 Platform::Allocator::GetSingleton
+entry 6b3240 Platform::Allocator::Allocate
+entry 6b32a0 Platform::Allocator::Free
+entry 6b5fd0 Platform::Main::GetFocusStateSingleton
+entry 6b65a0 Platform::GFxApp::GetFrameDelta_Float
+entry 6b66e0 Platform::GFxApp::SetFrameDelta_Float
+entry 6b7660 Platform::GFxApp::GetSingleton
+entry 6d4200 Dimps::Eva::TaskCore::GetName
+entry 6d5380 Dimps::Eva::TaskCore::AllocateNewTask
+entry 6d5460 Dimps::Eva::TaskCore::CancelTask
+entry 6d55c0 Dimps::Eva::TaskCore::GetTaskName
+entry 6d5cf0 Dimps::Eva::TaskCore::ReclaimCancelledTasks
+entry 6d62b0 Dimps::Eva::TaskCoreRegistry::GetCoreByIndex
+entry 6d69b0 Dimps::Eva::TaskCoreRegistry::GetNumActiveCores
+entry 6d6b70 GameEvents::MainMenu::Close
+entry 6d8d70 Pad::System_XInput::Update
+entry 6d90f0 Pad::System_XInput::GetSingleton
+entry 6d9170 Pad::System_XInput::SetDeviceInUse
+entry 6df8e0 Pad::System_RawInput::ClearKeys
+entry 6dfa00 Pad::System_RawInput::Update
+entry 6e00e0 Pad::System_RawInput::GetSingleton
+entry 6e0150 Pad::System_RawInput::ScanDevices
+entry 6e1310 Pad::System_RawInput::SetDeviceInUse
+entry 6ea4b0 Dimps::Eva::IEmSpriteNode::GetNumChildren
+entry 6ea4f0 Dimps::Eva::IEmSpriteNode::GetChildByIdx
+entry 6ea680 Dimps::Eva::IEmSpriteNode::GetAction
+entry 6ebc80 Dimps::Eva::IEmSpriteAction::GetActionState
+entry 6ed070 Game::Sprite::EmSprite::ApplyTextureKey
+entry 770cc0 Platform::D3D::RunScene_Render
+entry 770de0 Platform::D3D::LimitFrame
+entry 771180 Platform::D3D::GetSingleton
+entry 7719d0 Platform::D3D::BuildPresentParameters
+entry 7725b0 Platform::D3D::Reset
+entry 772820 Platform::D3D::Destroy
+entry 77d5f0 Platform::Main::WriteDisplayConfig
+entry 77e3e0 Platform::Main::Initialize
+entry 77e6c0 Platform::Main::Destroy
+entry 77eab0 Platform::Main::GetSingleton
+entry 77eb20 Platform::Main::RunWindowFunc
+entry 780380 Platform::Main::ApplyStartupParams
+entry 7831c0 Battle::ReplaySystem::Append
+entry 78daf0 Game::ReplayBattle::MovieSignal
+entry 78ecd0 Game::ReplayBattle::MovieValid
+entry 938e00 GameEvents::MainMenu::fadeSeconds
+
+## S0: candidatos de confianza ALTA (punteros a .text fuera de toda función)
+entry 6ba430
+entry 6ba440
+entry 6ba780
+entry 6cbba0
+entry 6d1790
+entry 6d1e80
+entry 6d4240
+entry 6d42a0
+entry 6d42b0
+entry 6d44c0
+entry 6d44d0
+entry 6d7040
+entry 6ea250
+entry 713920
+entry 7154f0
+entry 7155c0
+entry 715750
+entry 715760
+entry 715770
+entry 715780
+entry 71cc40
+entry 71d200
+entry 73b000
+entry 7759a0
+entry 775af0
+entry 7765b0
+entry 7765c0
+entry 7765d0
+entry 776620
+entry 776630
+entry 776640
+entry 776650
+entry 776660
+entry 776670
+entry 776680
+entry 776690
+entry 7766a0
+entry 7766b0
+entry 7766c0
+entry 7766d0
+entry 776840
+entry 776850
+entry 776b30
+entry 776b60
+entry 776c30
+entry 776c60
+entry 776c70
+entry 777150
+entry 777160
+entry 777220
+entry 777230
+entry 780030
+entry 780040
+entry 7837d0
+entry 7838f0
+entry 7840b0
+entry 7840c0
+entry 7840d0
+entry 7840e0
+entry 7840f0
+entry 784100
+entry 784110
+entry 784120
+entry 784130
+entry 784140
+entry 784150
+entry 784160
+entry 784170
+entry 784180
+entry 784190
+entry 7841a0
+entry 7841b0
+entry 7841c0
+entry 7841d0
+entry 7841e0
+entry 7841f0
+entry 784200
+entry 784210
+entry 784220
+entry 784230
+entry 784240
+entry 784250
+entry 784260
+entry 784270
+entry 784280
+entry 784290
+entry 784300
+entry 784310
+entry 784320
+entry 784330
+entry 7843b0
+entry 7843c0
+entry 7843d0
+entry 7843e0
+entry 784430
+entry 784440
+entry 784450
+entry 784460
+entry 7844c0
+entry 7844d0
+entry 7844e0
+entry 7844f0
+entry 784510
+entry 784520
+entry 784530
+entry 784540
+entry 784550
+entry 784560
+entry 784570
+entry 784580
+entry 784590
+entry 7845a0
+entry 7845b0
+entry 7845c0
+entry 7845d0
+entry 7845e0
+entry 784650
+entry 784660
+entry 784670
+entry 784680
+entry 784690
+entry 7846a0
+entry 7846b0
+entry 7846c0
+entry 7846d0
+entry 7846e0
+entry 7846f0
+entry 784700
+entry 784750
+entry 784760
+entry 784770
+entry 784780
+entry 784790
+entry 7847a0
+entry 7847b0
+entry 7847c0
+entry 7847d0
+entry 7847e0
+entry 7847f0
+entry 784800
+entry 784810
+entry 784820
+entry 784830
+entry 784840
+entry 784850
+entry 784860
+entry 784870
+entry 784880
+entry 784890
+entry 7848a0
+entry 7848b0
+entry 7848c0
+entry 7848d0
+entry 7848e0
+entry 7848f0
+entry 784900
+entry 7a49b0
+entry 7a5760
+entry 7a7660
+entry 7a81a0
+entry 7a81b0
+entry 7ab5d0
+entry 7adb90
+entry 7cbb10
+entry 7cc110
+entry 7cc1b0
+entry 7d8c10
+entry 7d8eb0
+entry 7d9930
+entry 7d9d00
+entry 7e1b10
+entry 7e3210
+entry 7e3220
+entry 7e4060
+entry 7ead70
+entry 7ead80
+entry 7f4e30
+entry 7f4e80
+entry 812680
+entry 812ab0
+entry 84c610
+entry 851a30
+entry 861530
+entry 864e00
+entry 867490
+entry 86a350
+entry 86f420
+entry 8701a0
+entry 874760
+entry 8789e0
+entry 87af80
+entry 8969f0
+entry 896e30
+entry 8992c0
+entry 89e8e0
+entry 89ef20
+entry 8a0d00
+entry 8a2160
+entry 8a2e30
+entry 8a5dd0
+entry 8a9bb0
+entry 8acb30
+entry 8aceb0
+entry 8aee20
+entry 8af930
+entry 919ed0
+entry 919f30
+entry 919f60
+entry 919fc0
+entry 91a370
+entry 91c080
+entry 91c180
+entry 91c290
+entry 91c2b0
+entry 91ed70
+entry 91ee10
+entry 91ee30
+entry 91eed0
+entry 91eef0
+entry 91ef90
+entry 91efb0
+entry 91f050
+entry 91f070
+entry 91f110
+entry 91f130
+entry 91f1d0
+entry 91f1f0
+entry 91f290
+entry 91fdd0
+entry 9203f0
+entry 920460
+
+## Tablas de EH (tools/eh_entradas.py) que no son funciones de Ghidra: 90
+# (fijan como entrada fuerte lo que el barrido de punteros ya encontraba)
+entry 4045c2  # cxx_continuacion
+entry 40eac5  # cxx_continuacion
+entry 40f21d  # cxx_continuacion
+entry 41000a  # cxx_continuacion
+entry 4299b2  # seh_filtro
+entry 4299b6  # seh_except
+entry 472711  # cxx_continuacion
+entry 473717  # cxx_continuacion
+entry 473952  # cxx_continuacion
+entry 473d44  # cxx_continuacion
+entry 4c3ff4  # cxx_continuacion
+entry 4e1a5d  # cxx_continuacion
+entry 4e1d8c  # cxx_continuacion
+entry 4e4bb9  # cxx_continuacion
+entry 61b97d  # cxx_continuacion
+entry 647d70  # cxx_continuacion
+entry 64b033  # cxx_continuacion
+entry 6629df  # cxx_continuacion
+entry 6cbdd8  # cxx_continuacion
+entry 6e2476  # seh_filtro
+entry 6e247a  # seh_except
+entry 738a52  # seh_filtro
+entry 738a56  # seh_except
+entry 738a92  # seh_filtro
+entry 738a96  # seh_except
+entry 74afa5  # cxx_continuacion
+entry 74b10a  # cxx_continuacion
+entry 77036d  # seh_filtro
+entry 770371  # seh_except
+entry 8c5f16  # cxx_continuacion
+entry 8c5f4c  # seh_filtro
+entry 8c5f75  # seh_except
+entry 8c6d61  # seh_finally
+entry 8c6d6d  # seh_finally
+entry 8c7a41  # seh_finally
+entry 8c7a53  # seh_finally
+entry 8c7a84  # seh_finally
+entry 8c8cae  # seh_finally
+entry 8c8db4  # seh_finally
+entry 8c916f  # seh_filtro
+entry 8c9183  # seh_except
+entry 8ccbed  # seh_filtro
+entry 8ccc01  # seh_except
+entry 8cdd48  # seh_finally
+entry 8cebea  # seh_finally
+entry 8cf4f9  # seh_finally
+entry 8cf711  # seh_finally
+entry 8cfa0e  # seh_finally
+entry 8cfad2  # seh_finally
+entry 8d002a  # seh_finally
+entry 8d40b0  # seh_filtro
+entry 8d40ba  # seh_except
+entry 8d40ee  # seh_finally
+entry 8d4196  # seh_filtro
+entry 8d419f  # seh_except
+entry 8d4331  # seh_filtro
+entry 8d433a  # seh_except
+entry 8d43c1  # seh_finally
+entry 8d45a8  # seh_filtro
+entry 8d45ac  # seh_except
+entry 8d4641  # seh_filtro
+entry 8d4645  # seh_except
+entry 8d6de5  # seh_finally
+entry 8d87c0  # seh_finally
+entry 8d907e  # seh_finally
+entry 8d9240  # seh_finally
+entry 8d924c  # seh_finally
+entry 8db14f  # seh_filtro
+entry 8db153  # seh_except
+entry 8db19f  # seh_filtro
+entry 8db1a3  # seh_except
+entry 8dbe0f  # seh_filtro
+entry 8dbe2b  # seh_except
+entry 8ddc21  # seh_finally
+entry 8df057  # seh_finally
+entry 8df451  # seh_finally
+entry 8df6db  # seh_filtro
+entry 8df6ee  # seh_except
+entry 8e0c7a  # seh_finally
+entry 8e24c5  # seh_finally
+entry 8e2bf1  # seh_finally
+entry 8e3f64  # seh_filtro
+entry 8e3f78  # seh_except
+entry 8e4f8b  # seh_finally
+entry 8e57d6  # seh_finally
+entry 8e5b13  # seh_finally
+entry 8e5bec  # seh_finally
+entry 8e75c4  # seh_finally
+entry 8e9b46  # seh_finally
+entry 8e9c47  # seh_finally
+
+
+## Destinos de saltos indirectos medidos por W1 que Ghidra no tiene como funcion
+# (tools/semillas_saltos.py; el sitio de origen va en el comentario)
+entry 4c9b50  # destino de un salto en 00482C35
+entry 664c00  # destino de un salto en 00664BD9
+entry 664c20  # destino de un salto en 00664BB6
+entry 66ddf0  # destino de un salto en 0066D900
+entry 66df80  # destino de un salto en 0066D900
+entry 66e570  # destino de un salto en 0066E28D
+entry 66e680  # destino de un salto en 0066E28D
+entry 66eb00  # destino de un salto en 0066E29D
+entry 66fc40  # destino de un salto en 0066E29D
+entry 6d1df0  # destino de un salto en 006D1E85
+entry 6d1e80  # destino de un salto en 0067F7AF
+entry 6d40d0  # destino de un salto en 0053355C
+entry 6d4210  # destino de un salto en 006D40FE
+entry 6d4230  # destino de un salto en 006D413A
+entry 6d4260  # destino de un salto en 006D40DE
+entry 6d4460  # destino de un salto en 006D44B9
+entry 6d5690  # destino de un salto en 0040CFE8
+entry 6e2400  # destino de un salto en 005313EE
+entry 6e9730  # destino de un salto en 006E7D13
+entry 6eeb50  # destino de un salto en 0067F7AF
+entry 7d8c40  # destino de un salto en 007D9DFB
+entry 7d8c60  # destino de un salto en 007D9E0B
+entry 7d9df0  # destino de un salto en 0081262E
+entry 7f5a20  # destino de un salto en 007F513E
+entry 8484c0  # destino de un salto en 008484D6
+entry 8789a0  # destino de un salto en 007E145E
+entry 8cec44  # destino de un salto en 008D7F41
+entry 8d7f54  # destino de un salto en 008D7F41
+entry 8e6255  # destino de un salto en 008D7F41
+entry 8e6278  # destino de un salto en 008D7F41
